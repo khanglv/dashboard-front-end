@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "dashboard-fe-inv",
+            "script": "npm",
+            "args": "run build:serve",
+            "source_map_support": false,
+            "post_update": [
+                "echo App has been updated, running npm install...",
+                "npm install",
+                "echo App is being restarted now"
+            ],
+            "exec_timeout": 30000
+        }
+    ]
+}

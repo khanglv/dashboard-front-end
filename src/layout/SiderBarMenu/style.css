@@ -1,0 +1,60 @@
+
+.ant-layout-header{
+    height: 40px!important;
+    line-height: 0!important;
+    padding: 0!important;
+}
+
+/* custom ant menu */
+.ant-menu.ant-menu-dark, .ant-menu-dark, .ant-menu-sub {
+    background-color: rgb(59, 97, 149)!important;
+}
+
+.ant-menu > .ant-menu-item{
+    padding-left: 24px!important;
+    font-size: 13px!important;
+    margin: 0!important;
+}
+
+.ant-menu > .ant-menu-item-selected{
+    padding-left: 24px!important;
+    font-size: 13px!important;
+    margin: 0!important;
+    background-color: rgba(255, 255, 255, 0.1)!important;
+}
+
+.ant-menu > .ant-menu-item:hover{
+    background-color: rgba(169, 172, 197, 0.1)!important;
+}
+
+.ant-menu > .ant-menu-item-selected > .svg{
+    filter: brightness(0.5) sepia(1) saturate(10000%)
+}
+
+.ant-menu-submenu-placement-bottomLeft > .ant-menu-vertical {
+    background-color: #fff!important;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ant-menu-submenu-placement-bottomLeft > .ant-menu-vertical > .ant-menu-item:hover{
+    color: #00377b!important;
+}
+
+.ant-menu-submenu-placement-bottomLeft > .ant-menu-vertical > .ant-menu-item-selected{
+    background-color: #f1f7ff!important;
+    color: #00377b!important;
+}
+
+.ant-menu-horizontal > .ant-menu-submenu-open {
+    color: #00377b!important;
+    border-bottom: 2px solid #00377b!important;
+}
+
+/* .ant-menu > .ant-menu-item:hover > .svg{
+    filter: brightness(0.5) sepia(1) saturate(10000%)
+} */
+
+/* .ant-menu > .ant-menu-item:hover, .ant-menu-item-selected > .svg{
+    filter: brightness(0.5) sepia(1) saturate(10000%)
+} */

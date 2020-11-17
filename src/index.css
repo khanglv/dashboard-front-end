@@ -1,0 +1,103 @@
+@import '/font/montserrat.css';
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    color: #333333
+}
+
+/* @media screen and (min-width: 25em){
+    html { 
+        font-size: calc(14px + (14 - 10) * (100vw - 320px) / (1200 - 320) ); 
+    }
+} */
+
+/* @media only screen and (max-width: 768px) {
+	body{
+        font-size: 11px!important;
+    }
+} */
+
+code {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.p-top5 {
+    padding-top: 5px;
+}
+
+.p-top10 {
+    padding-top: 10px;
+}
+
+.p-top15{
+    padding-top: 15px;
+}
+
+.p-top20 {
+    padding-top: 20px;
+}
+
+.p-left10{
+    padding-left: 10px;
+}
+
+.p-left15{
+    padding-left: 15px;
+}
+
+.center-layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* antd loading */
+.ant-spin-dot-item{
+    background-color: #00377b!important;
+}
+.ant-spin-text{
+    color:  #00377b!important;
+}
+
+/* custom calendar */
+.ant-picker-cell-selected .ant-picker-cell-inner{
+    background-color: #00377b!important;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
+    border-color: #00377b!important;
+}
+
+.ant-picker-header-view > .ant-picker-month-btn:hover, .ant-picker-year-btn:hover{
+    color: #00377b!important;
+}
+
+.ant-picker-footer > .ant-picker-today-btn{
+    color: #00377b!important;
+}
+
+/* tooltip ant */
+.ant-tooltip > .ant-tooltip-content > .ant-tooltip-inner{
+    background-color: #333333;
+}
+
+/* ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #034699; 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+} */

@@ -1,0 +1,29 @@
+.btnLogin{
+    border-radius: 4px!important;
+    background-color: #00377b!important;
+    border: none!important;
+    padding-top: 12px!important;
+    padding-bottom: 12px!important;
+    padding-left: 28px!important;
+    padding-right: 28px!important;
+    height: auto!important;
+    font-size: 13px!important;
+    font-weight: 600!important;
+    font-stretch: normal!important;
+    font-style: normal!important;
+}
+
+.btnLogin:hover{
+    background-color: #094794!important;
+}
+
+@media only screen and (max-width: 768px) {
+    .login-form{
+        margin-left: 10px!important;
+        margin-right: 10px!important;
+    }
+    .btnLogin{
+        padding-left: 20px!important;
+        padding-right: 20px!important;
+    }
+}

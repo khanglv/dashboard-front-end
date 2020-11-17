@@ -1,0 +1,33 @@
+.rootModalOTP > .ant-modal-content{
+    border-radius: 8px;
+}
+
+.rootModalOTP > .ant-modal-content > .ant-modal-header{
+    border-radius: 8px;
+}
+
+.btnOptionLeft{
+    font-size: 13px!important;
+    font-weight: 600!important;
+    color: #666666!important;
+    padding: 10px 0!important;
+    border-radius: 4px!important;
+    width: 100%!important;
+    height: auto!important
+}
+
+.btnOptionRight{
+    font-size: 13px!important;
+    font-weight: 600!important;
+    color: #fff!important;
+    padding: 10px 0!important;
+    height: auto!important;
+    width: 100%!important;
+    border-radius: 4px!important;
+    background-color: #00377b!important;
+    border: 1px solid #00377b!important
+}
+
+.btnOptionRight:hover{
+    background-color: #094894!important;
+}

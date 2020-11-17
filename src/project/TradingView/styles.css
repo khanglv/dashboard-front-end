@@ -1,0 +1,173 @@
+.bottom{
+    position: absolute;
+    height: 10px;
+    bottom: 0;
+    width: 100%;
+}
+
+.TVChartContainer {
+	height: calc(100vh - 85px);
+}
+
+/* styles ant tabs */
+.headerTabTrading > .ant-tabs-bar > .ant-tabs-nav-container > .ant-tabs-nav-wrap > .ant-tabs-nav-scroll > .ant-tabs-nav-animated{
+	font-size: 12px!important;
+	color: rgba(0, 55, 123, 0.6)!important;
+    font-weight: 600!important;
+    padding-top: 5px!important;
+    height: 40px!important;
+}
+
+.headerTabTrading > .ant-tabs-bar > .ant-tabs-nav-container > .ant-tabs-nav-wrap > .ant-tabs-nav-scroll > .ant-tabs-nav .ant-tabs-tab-active{
+	color: rgb(5, 69, 146)!important;
+	font-weight: 600!important;
+}
+
+.headerTabTrading > .ant-tabs-bar > .ant-tabs-nav-container > .ant-tabs-nav-wrap > .ant-tabs-nav-scroll > .ant-tabs-nav .ant-tabs-tab:hover{
+	color: #00377b!important;
+}
+
+.headerTabTrading > .ant-tabs-bar > .ant-tabs-nav-container > .ant-tabs-nav-wrap > .ant-tabs-nav-scroll > .ant-tabs-nav-animated > .ant-tabs-ink-bar{
+	background-color: #00377b!important;
+}
+
+/* custom order buy */
+/* .mainOrder{
+	width: calc(100% - 45px);
+	padding: 0 5px;
+	height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+	.mainOrder{
+		margin-top: 20px;
+		width: 100%;
+		padding: 0 5px 10px 5px;
+	}
+} */
+
+.toolBarOrder{
+	height: calc(100vh - 40px);
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.23);
+	margin-left: 5px;
+	width: 3rem
+}
+
+/* custom tab order antd */
+[data-theme='compact'] .mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab,
+.mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+	height: 40px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	color: rgba(0, 55, 123, 0.6);
+	font-weight: 600;
+	width: 9vw;
+	border-top-right-radius: 5px!important;
+	border-top-left-radius: 5px!important;
+	background-color: #e1e3ea!important;
+	border-top: 4px solid #e1e3ea!important;
+}
+
+/* @media only screen and (max-width: 768px) {
+	[data-theme='compact'] .mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab,
+	.mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+		width: 8rem;
+	}
+} */
+
+/* [data-theme='compact'] .mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active,
+.mainOrder > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+	color: #00377b!important;
+	border-top: 4px solid #00377b!important;
+	background-color: #fff!important;
+} */
+
+/* style select ant */
+
+.btn-order-buy {
+	color: #fff!important;
+	font-size: 14px!important;
+	font-weight: 500!important;
+	width: 100%;
+	height: 3rem!important;
+	border-radius: 4px!important;
+	background-color: #00377b!important;
+	border: 1px solid #00377b!important;
+}
+
+.btn-order-edit {
+	color: #fff!important;
+	font-size: 14px!important;
+	font-weight: 500!important;
+	width: 100%;
+	height: 3rem!important;
+	border-radius: 4px!important;
+	background-color: #c42127!important;
+	border: 1px solid #c42127!important;
+}
+
+.btn-order-buy:hover{
+	background-color: #084692!important;
+}
+
+.customSwitch > .ant-switch{
+	background-color: rgba(0, 0, 0, 0.25)!important;
+}
+
+.customSwitch > .ant-switch-checked{
+	background-color: #008055!important;
+}
+
+
+/* custom progress order */
+.customProgressOrder > .ant-progress-outer > .ant-progress-inner{
+	background-color: #c42127!important;
+}
+
+/* animation */
+@media (min-width: 992px) {
+    .animateCross {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+}
+  
+@keyframes slideIn {
+    0% {
+      transform: translateX(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform:translateX(0rem);
+      opacity: 1;
+    }
+    0% {
+      transform: translateX(1rem);
+      opacity: 0;
+    }
+}
+  
+@-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateX(1rem);
+      -webkit-opacity: 0;
+    }
+}
+
+.slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+}

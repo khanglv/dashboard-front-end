@@ -1,0 +1,127 @@
+.link-custom{
+    color: #fff!important;
+}
+
+.link-custom:hover{
+    text-decoration: none!important;
+    background: none!important
+}
+
+.link-derective{
+    color: rgba(255, 255, 255, 0.6)!important;
+    display: flex;
+    text-decoration: none;
+}
+
+.itemFormLogout{
+    cursor: pointer!important;
+}
+
+.itemFormLogout:hover{
+    background-color: rgb(229, 231, 240);
+}
+
+.iconHide{
+    color: #3b6195;
+    position: absolute;
+    left: 0.4rem;
+    top: 0.8rem;
+    font-size: 14px!important;
+}
+
+.iconHide_2{
+    color: #94abcf!important;
+    position: absolute;
+    left: 0.8rem;
+    top: 0.8rem;
+    font-size: 14px!important;
+}
+
+.iconHide_2:hover{
+    color: #3b6195!important
+}
+
+/* header */
+.rightUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+}
+
+.rightUser:hover{
+    background-color: #002c62;
+}
+
+/* custom ant drawer */
+.ant-drawer.ant-drawer-open .ant-drawer-mask{
+    opacity: 0!important;
+}
+
+/* animation */
+@media (min-width: 992px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+}
+  
+@keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform:translateY(0rem);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+}
+  
+@-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+}
+  
+.slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+}
+
+.badge {
+    font-size: 10px;
+    position: absolute;
+    top: -11px;
+    right: -12px;
+    padding: 8px 5px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+
+.notify {
+    background-color: #ffffff;
+    width: 17rem;
+    position: absolute;
+    right: 18rem;
+    top: 40px;
+    z-index: 10000;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 5px 6px;
+}
+  

@@ -1,0 +1,9 @@
+ant design: npm install antd
+react router: npm install --save react-router-dom
+react redux: npm install --save react-redux
+react redux thunk: npm install redux-thunk
+NProgress: npm install --save nprogress
+boostrap: npm install bootstrap
+
+start pm2: PORT=3006 pm2 start npm --name "test_user" -- start
+build prod: pm2 start app.config.json
