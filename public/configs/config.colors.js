@@ -31,5 +31,6 @@ window.colors = {
     _RED: 'red',
     _ORANGE_HOVER: '#f6ab1c',
     _BLUE_VCSC_06: 'rgba(0, 55, 123, 0.6)',
-    _RED_VCSC_MY_HOVER: '#ce3d42'
+    _RED_VCSC_MY_HOVER: '#ce3d42',
+    _NOTIFY_ACTIVE_CUSTOM: '#f5f6f7'
 }

@@ -23,7 +23,8 @@ import {
     FPortfolioInvesting,
     FInfoAccount,
     FChartReview,
-    FAlertConfigs
+    FAlertConfigs,
+    FManagementAlert
 } from '../layout/MainGeneral';
 
 
@@ -81,6 +82,7 @@ class RouteURL extends Component{
                         <Route this path="/info-account" component={FInfoAccount} />
                         <Route this path="/chart-review" component={FChartReview} />
                         <Route this path="/alert-configs" component={FAlertConfigs} />
+                        <Route this path="/management-alert" component={FManagementAlert} />
                         <Route this path="/test" component={Test} />
                         <Route exact path="*" component={Error404} />
                     </Switch>

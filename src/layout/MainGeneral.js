@@ -15,7 +15,10 @@ import IndexAccountBalanceDetail from '../project/Portfolio/AccountBalanceDetail
 import IndexPortfolioInvesting from '../project/Portfolio/PortfolioInvesting/index';
 import InfoAccount from '../components/InfoAccount/InfoAccount';
 import ChartReview from '../project/ChartReview/index';
+
+//Alert
 import AlertConfigs from '../project/Alert/Configs';
+import ManagementAlert from '../project/Alert/ManagementAlert'
 
 import {Event} from '../components/Common/Event';
 
@@ -82,6 +85,7 @@ export const FPortfolioInvesting = (props)=> Main(IndexPortfolioInvesting, props
 export const FInfoAccount = ()=> Main(InfoAccount)
 export const FChartReview = ()=> Main(ChartReview)
 export const FAlertConfigs = ()=> Main(AlertConfigs)
+export const FManagementAlert = ()=> Main(ManagementAlert)
 
 const styles = {
     appIcon: {

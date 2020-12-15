@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import { Layout, Avatar, Card, List, Select } from 'antd';
-import { UserOutlined, LogoutOutlined, QuestionOutlined } from '@ant-design/icons';
+import { Layout, Avatar, Card, List, Select, Tabs } from 'antd';
+import { UserOutlined, LogoutOutlined, QuestionOutlined, SettingOutlined } from '@ant-design/icons';
+import * as common from '../components/Common/Common';
 import * as storage from '../api/storage';
+import { withRouter } from "react-router";
 import {connect} from 'react-redux';
 import "./styles.css"
 import {css} from 'emotion';
@@ -10,6 +12,7 @@ import {css} from 'emotion';
 let color = window['colors'];
 const { Option } = Select;
 const { Header } = Layout;
+const { TabPane } = Tabs;
 
 const windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
 // const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
@@ -29,55 +32,239 @@ const customSelect = css`
     }
 `
 
-// const notify = css`
-//     margin-right: 2em;
-//     position: relative;
-//     cursor: pointer;
-//     display: inline-block;
-//     &:hover{
-//         background-color: #264d87;
-//     }
-//     .numberNotify{
-//         position: absolute;
-//         color: ${color._WHITE};
-//         top: -8px;
-//         right: -8px;
-//         border-radius: 50%;
-//         background-color: ${color._RED_VCSC};
-//         padding: 8px 5px;
-//         font-size: 8px;
-//     }
-// `
+const notify = css`
+    margin-right: 2em;
+    position: relative;
+    display: inline-block;
+    &:hover{
+        background-color: #264d87;
+    }
+    .numberNotify{
+        position: absolute;
+        color: ${color._WHITE};
+        top: -8px;
+        right: -8px;
+        border-radius: 50%;
+        background-color: ${color._RED_VCSC};
+        padding: 8px 5px;
+        font-size: 8px;
+    }
+`
 
-// const formNotify = css`
-//     position: absolute;
-//     top: 30px;
-//     width: 350px;
-//     height: 500px;
-//     background-color: ${color._WHITE};
-//     box-shadow: 0 4px 10px 0 rgba(0, 55, 123, 0.05);
-//     border-radius: 4px;
-//     padding: 10px;
-//     padding-top: 15px;
-// `
+const formNotify = css`
+    position: absolute;
+    top: 30px;
+    width: 350px;
+    max-height: 500px;
+    background-color: ${color._WHITE};
+    box-shadow: 0 4px 10px 0 rgba(0, 55, 123, 0.05);
+    border-radius: 4px;
+    padding-bottom: 0;
+    z-index: 100;
+    .main{
+        .title{
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: ${color._BLACK};
+            display: flex;
+            align-items: center;
+            .left{
+                float: left;
+                width: 60%;
+            }
+            .right{
+                float: right;
+                width: 40%;
+                display: flex;
+                justify-content: flex-end;
+                .iconSetting{
+                    width: auto;
+                    &:hover{
+                        color: ${color._BLUE_VCSC};
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .body{
+            font-family: 'Montserrat';
+            padding: 10px;
+            padding-right: 5px;
+            padding-top: 0;
+            position: relative;
+            .ant-tabs-nav{
+                font-weight: 600;
+            }
+            .ant-tabs-nav .ant-tabs-tab:hover{
+                color: ${color._BLUE_VCSC};
+            }
+            .ant-tabs-tab{
+                padding-bottom: 5px;
+            }
+            .ant-tabs-tab-active{
+                color: ${color._BLUE_VCSC};
+                font-weight: 600;
+            }
+            .ant-tabs-ink-bar{
+                background-color: ${color._BLUE_VCSC}; 
+            }
+            .ant-tabs-content{
+                ._scroll{
+                    overflow-y: auto;
+                    max-height: 350px;
+                    ::-webkit-scrollbar {
+                        width: 6px;
+                        height: 6px;
+                    }
+                    ::-webkit-scrollbar-track {
+                        /* box-shadow: inset 0 0 5px #b6b5b5; 
+                        border-radius: 8px; */
+                        /* background: red;  */
+                    }
 
-// function FormNoify(){
-//     return (
-//         <div className={formNotify}>
-//             <div>
-//                 Thông báo
-//             </div>
-//         </div>
-//     )
-// }
+                    ::-webkit-scrollbar-thumb {
+                        background: #e0dede; 
+                        border-radius: 8px;
+                        width: 100px;
+                    }
+
+                    ::-webkit-scrollbar-thumb:hover {
+                        background: #c3c3c3;
+                    }
+                }
+            }
+            .content{
+                width: 100%;
+                padding: 5px 0;
+                padding-left: 10px;
+                cursor: pointer;
+                &:hover{
+                    background-color: ${color._HOVER};
+                }
+                .main{
+                    font-weight: 500;
+                    font-size: 13px;
+                }
+                .support{
+                    font-size: 10px;
+                    color: ${color.GREY_999}
+                }
+            }
+            .isNew{
+                border-left: 3px solid ${color._BLUE};
+                background-color: ${color._NOTIFY_ACTIVE_CUSTOM};
+            }
+            .isImportant{
+                border-left: 3px solid ${color._PURPLE};
+            }
+            .borderBottomRadius{
+                border-bottom: 1px solid ${color._GREY_LIGHT_2};
+            }
+        }
+        .footerSeen{
+            clear: both;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 30px;
+            background-color: ${color._GREY_LIGHT_1};
+            box-shadow: 0 4px 10px 0 rgba(0, 55, 123, 0.05);
+            font-weight: 600;
+            font-size: 12px;
+            padding: 0 10px;
+            .left{
+                color: ${color._GREY_666};
+                cursor: pointer;
+                &:hover{
+                    background-color: ${color._HOVER}
+                }
+            }
+            .right{
+                color: ${color._BLUE_VCSC};
+                cursor: pointer;
+                &:hover{
+                    background-color: ${color._HOVER}
+                }
+            }
+        }
+    }
+`
+
+function FormNotify(props){
+    const {arrContents} = props;
+    function navigatorNotify(){
+        props.onNavigatorNotify();
+    }
+
+    return (
+        <div className={formNotify}>
+            <div className="main">
+                <div className="title">
+                    <div className="left">
+                        <div>Thông báo</div>
+                    </div>
+                    <div className="right">
+                        <SettingOutlined className="iconSetting"/>
+                    </div>
+                </div>
+                <div className="body p-top5">
+                    <Tabs defaultActiveKey="1">
+                        <TabPane tab="Tất cả" key="1">
+                            <div className="_scroll">
+                                {
+                                    arrContents.length > 0 ? 
+                                    arrContents.map((item, idx)=>{
+                                        return(
+                                            <div key={idx} className={idx === 0 ? "" : "p-top10"}>
+                                                <div className="content isNew">
+                                                    <div className="main">
+                                                        {item.content}
+                                                    </div>
+                                                    <span className="support">
+                                                        {common.convertDDMMYYYY(item.createDate)} 
+                                                        <i> lúc </i>
+                                                        {common.stringToTimeHHMMSS(item.createDate)}
+                                                    </span>
+                                                </div>
+                                                <div className="borderBottomRadius p-top10"/>
+                                            </div>
+                                        )
+                                    }) : null
+                                }
+                            </div>
+                        </TabPane>
+                        <TabPane tab="Lệnh" key="2">
+
+                        </TabPane>
+                        <TabPane tab="Tin từ VCSC" key="3">
+
+                        </TabPane>
+                    </Tabs>
+                </div>
+                <div className="footerSeen">
+                    <div className="left">
+                        <img alt="" src="./icon/ic_markread.svg"/>&nbsp;Đánh dấu đã đọc
+                    </div>
+                    <div className="right" onClick={navigatorNotify}>
+                        Xem tất cả&nbsp;<img alt="" src="./icon/ic_arrow.svg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 class HeaderCom extends Component{
     constructor(props){
         super(props);
         this.wrapperRef = React.createRef();
+        this.refNotify = React.createRef();
         this.state = {
             dataTesst: [],
             isNotify: false,
+            isShowNotify: false,
             userInfo: JSON.parse(localStorage.getItem('userInfoKey')),
             accountInfo: JSON.parse(localStorage.getItem('accountInfoKey')),
             subNumber: ''
@@ -115,14 +302,20 @@ class HeaderCom extends Component{
 
     componentDidMount() {
         document.addEventListener('click', this.handleClick);
+        // document.addEventListener('click', this.handleClickNotify);
     }
 
     componentWillUnmount() {
         document.removeEventListener('click', this.handleClick);
+        // document.addEventListener('click', this.handleClickNotify);
     }
     
     onHome = ()=>{
         window.location.href = "/home";
+    }
+
+    _onNavigatorNotify = ()=>{
+        this.props.history.push('/management-alert');
     }
 
     handleClick = (event) => {
@@ -132,6 +325,26 @@ class HeaderCom extends Component{
                 this.setState({isShowInfoAccount: false});
             }
         }
+    }
+
+    handleClickNotify = (event) => {
+        if(this.refNotify.current){
+            const { target } = event;
+            if (!this.refNotify.current.contains(target)) {
+                this.showInfoNotify();
+            }
+        }
+    }
+
+    showInfoNotify = ()=>{
+        if (!this.state.isShowNotify) {
+            document.addEventListener('click', this.handleClickNotify, false);
+        } else {
+            document.removeEventListener('click', this.handleClickNotify, false);
+        }
+        this.setState(previousState => (
+            { isShowNotify: !previousState.isShowNotify }
+        ))
     }
 
     showInfoAccount = ()=>{
@@ -181,8 +394,11 @@ class HeaderCom extends Component{
             isShowInfoAccount,
             userInfo,
             accountInfo,
-            subNumber
+            subNumber,
+            isShowNotify
         } = this.state;
+
+        const {arrContents} = this.props;
 
         const lstSubNumber = accountInfo ? accountInfo.userInfo.accounts[0].accountSubs : [];
 
@@ -207,15 +423,30 @@ class HeaderCom extends Component{
                                 <span className="badge">3</span>
                             </div>
                         </div> */}
-                        {/* <span className={notify}>
-                            <img width="16" alt="" src="/images/icons/notify/ic_speaker.svg"/>
-                            <span className="numberNotify">6</span>
-                        </span>
                         <span className={notify}>
-                            <img width="16" alt="" src="/images/icons/notify/ic_notification.svg"/>
-                            <span className="numberNotify">9</span>
-                            <FormNoify />
-                        </span> */}
+                            <div style={{cursor: 'pointer'}}>
+                                <img width="16" alt="" src="/images/icons/notify/ic_speaker.svg"/>
+                                <span className="numberNotify">6</span>
+                            </div>
+                        </span>
+                        <span className={notify} ref={this.refNotify}>
+                            <div style={{cursor: 'pointer'}} onClick={this.showInfoNotify} >
+                                <img width="16" alt="" src="/images/icons/notify/ic_notification.svg"/>
+                                {arrContents.length > 0 ? 
+                                    arrContents.length > 9 ? 
+                                    <span className="numberNotify">9+</span>
+                                    :
+                                    <span className="numberNotify">{arrContents.length}</span> 
+                                    : null
+                                }
+                            </div>
+                            {isShowNotify && 
+                                <FormNotify 
+                                    onNavigatorNotify={this._onNavigatorNotify}
+                                    {...this.props}
+                                />
+                            }
+                        </span>
                         <span style={{marginRight: '1em'}}>
                             <Select
                                 className={customSelect}
@@ -347,11 +578,12 @@ class CardAccount extends Component {
 
 const mapStateToProps = state =>{
     return{
-        subNumberChange: state.rootMain['SUB_NUMBER']
+        subNumberChange: state.rootMain['SUB_NUMBER'],
+        arrContents: state.indexMasterService['ALERT_SUB_CONTENT.GET']
     }
 }
 
-export default connect(mapStateToProps) (HeaderCom);
+export default withRouter(connect(mapStateToProps) (HeaderCom));
 
 const styles = {
     rootHeader:{

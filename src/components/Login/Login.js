@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
 import {login, loginRequest, loginWithCore} from '../../stores/actions/investor/loginAction';
 import {LOGIN_SUCCESS, LOGIN_FAILED} from '../../stores/actions/investor/actionTypes';
 import {loginCore, loginCoreOTP, getBanks, getUser, getAccountBank} from '../../stores/actions/core/loginCoreAction';
+import {getConfigs} from '../../stores/actions/masterService/alertAction';
+import {socketIoInit} from '../../project/Alert/socketIo/socketIo';
+
 import {sendOTPMobile} from '../../api/apiCore';
 // import * as socket from '../../project/Socket/Socket';
 import Loading from '../Loading/Loading';
@@ -162,6 +165,15 @@ class Login extends Component{
         }
     }
 
+    reConnectSocket = async(msndt)=> {
+        try {
+            await this.props.getConfigs({msndt: msndt});
+            socketIoInit();
+        } catch (error) {
+            
+        }
+    }
+
     confirmOTP = async(event)=>{
         try {
             if(this.props.loginCoreData && event){
@@ -176,6 +188,11 @@ class Login extends Component{
                     this.setState({loadingOtp: false});
                     common.notify("error", 'Xác nhận OTP thất bại. Vui lòng thử lại hoặc liên hệ quản trị viên!!!');
                 }else{
+                    try {
+                        this.reConnectSocket(res.data.userInfo.accounts[0].accountNumber || null);
+                    } catch (error) {
+                        
+                    }
                     await this.props.getUser({"accountNumber": res.data.userInfo.accounts[0].accountNumber || userName});
                     await this.props.getBanks({"accountNumber": res.data.userInfo.accounts[0].accountNumber || userName});
                     await this.props.getAccountBank({"accountNumber": res.data.userInfo.accounts[0].accountNumber || userName});
@@ -334,6 +351,7 @@ const mapDispatchToProps = dispatch =>{
         getUser: (data)=> dispatch(getUser(data)),
         getAccountBank: (data)=> dispatch(getAccountBank(data)),
         loginWithCore: (data)=> dispatch(loginWithCore(data)),
+        getConfigs: (data)=> dispatch(getConfigs(data)),
     }
 }
 

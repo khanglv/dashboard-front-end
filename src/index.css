@@ -49,6 +49,14 @@ code {
     padding-left: 15px;
 }
 
+.m-top5{
+    margin-top: 5px;
+}
+
+.m-top10{
+    margin-top: 10px;
+}
+
 .center-layout{
     display: flex;
     justify-content: center;

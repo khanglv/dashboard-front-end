@@ -75,13 +75,16 @@ const rootMain = css`
 `
 
 function CheckBox(props){
+    const onChange = (e)=>{
+        props._onChangeCheckbox(e);
+    }
     return(
         <div className={rootMain}>
             <label className="container">{props.value}
                 <input 
-                    type="checkbox" 
+                    type="checkbox"
                     checked={props.isChecked}
-                    onChange={e =>{}}
+                    onChange={onChange}
                 />
                 <span className="checkmark"></span>
             </label>
